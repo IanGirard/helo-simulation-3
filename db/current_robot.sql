@@ -1,3 +1,3 @@
 SELECT * 
-FROM users
+FROM robots
 WHERE id = $1;

@@ -29,7 +29,18 @@ passport.use( new Auth0Strategy({
     callbackURL: process.env.AUTH_CALLBACK
 },function(accessToken, refreshToken, extraParams, profile, done){
     const db = app.get('db');
-    console.log(profile)
+    // console.log(profile)
+    db.get_robot([profile.identities[0].user_id]).then( user => {
+        if(user[0]) {
+            done(null, user[0].id)
+        } else {
+            db.create_robot([profile.displayName, profile.emails[0].value, 
+            profile.picture, profile.identities[0].user_id]).then(user => {
+                done(null, user[0].id)
+            })
+        }
+ 
+    })
 }
 ))
 

@@ -1,5 +1,5 @@
-INSERT INTO users
-(user_name, email, img, auth_id)
+INSERT INTO robots
+(first_name, last_name, email, img, auth_id)
 VALUES
-($1, $2, $3, $4)
+($1, $2, $3, $4, $5)
 RETURNING *;
