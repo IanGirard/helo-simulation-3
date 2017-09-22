@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { getUser } from '../../ducks/users'
 
-export default class Dashboard extends Component {
+
+class Dashboard extends Component {
+    constructor(props) {
+        super(props)
+        this.state= {
+            user: {}
+        }
+    }
+    componentDidMount() {
+        this.props.getUser()
+    }
+    
+
+
     render() {
         return (
             <div className='App'>
@@ -12,3 +27,11 @@ export default class Dashboard extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { getUser })(DashBoard)
