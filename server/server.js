@@ -44,14 +44,15 @@ passport.use( new Auth0Strategy({
 }
 ))
 
-passport.serializeUser(function(user, done) {
-    console.log('serialize')
-    done(null, user);
+passport.serializeUser(function(userId, done) {
+    console.log('serialize', userId);
+    done(null, userId);
 })
 
-passport.deserializeUser(function(user, done) {
-    app.get('db').current_robot([user]).then (user =>{
-    done(null, user);
+passport.deserializeUser(function(userId, done) {
+    app.get('db').current_robot([userId]).then (user =>{
+        console.log('deserialize', userId);
+    done(null, user[0]);
     })
 })
 
@@ -71,6 +72,7 @@ app.get('/auth/user', (req, res) => {
 })
 
 app.get('/auth/logout', (req, res) => {
+    console.log('hello');
     req.logOut();
     res.redirect(302, 'http://localhost:3000/')
 })
