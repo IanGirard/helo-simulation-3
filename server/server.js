@@ -58,54 +58,5 @@ app.get('/auth/logout', (req, res) => {
 })
 
 
-passport.use(new Auth0Strategy({
-    domain: process.env.AUTH_DOMAIN,
-    clientID: process.env.AUTH_CLIENT_ID,
-    clientSecret: process.env.AUTH_CLIENT_SECRET,
-    callbackURL: process.env.AUTH_CALLBACK,
-}, function(accessToken, refreshToken, extraParams, profile, done){
-
-
-    const db = app.get('db');
-    //    console.log('id', profile.identities[0].user_id)
-    
-       db.get_user([profile.identities[0].user_id]).then( user => {
-           if(user[0]) {
-               done(null, user[0].id)
-           } else {
-               db.create_user([profile.displayName, profile.emails[0].value, 
-               profile.picture, profile.identities[0].user_id]).then(user => {
-                   done(null, user[0].id)
-               })
-           }
-    
-       })
-    
-    }))
-
-
-    app.get('/auth', passport.authenticate('auth0'));
-    
-    app.get('/auth/callback', passport.authenticate('auth0', {
-        successRedirect: 'http://localhost:3000/api/auth/setUser',
-        failureRedirect: '/api/auth/login'
-    }))
-    
-    app.get('/api/auth/authenticated', (req, res) => {
-        if (!req.user) {
-            return res.status(403).send('User not found');
-        }  else {
-            return res.status(200).send(req.user);
-        }
-        res.status(200).send('Yo')
-    })
-    
-    app.get('/auth/logout', (req, res) => {
-        req.logout();
-        res.redirect(302, 'http://localhost:3000/')
-    })
-    
-
-
 const port = 3030;
 app.listen(port, () => console.log('listening on port: ', port))
