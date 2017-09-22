@@ -50,7 +50,10 @@ passport.serializeUser(function(user, done) {
 })
 
 passport.deserializeUser(function(user, done) {
+    app.get('db').current_robot([user]).then (user =>{
+        console.log(user);
     done(null, user);
+    })
 })
 
 app.get('/auth', passport.authenticate('auth0'));

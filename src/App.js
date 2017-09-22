@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/Login/Login';
+import Dashboard from './components/Dashboard/Dashboard'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <HashRouter>
-          <div>
+          <Switch>
             <Route exact path='/' component={ Login }/>
-          </div>
+            <Route path='/dashboard' component={ Dashboard }/>
+          </Switch>
         </HashRouter>
       </div>
     );

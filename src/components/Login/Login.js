@@ -13,7 +13,7 @@ export default class Login extends Component {
                     </div>
 
                     <div className='loginButtonContainer'>
-                        <a href={ process.env.REACT_APP_LOGIN}>
+                        <a href={ process.env.REACT_APP_LOGIN }>
                         <div className='loginButton'>Login / Register</div></a> 
                     </div>
                 </div>
