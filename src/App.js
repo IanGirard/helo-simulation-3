@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { HashRouter, Route } from 'react-router-dom';
+import Login from './components/Login/Login';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <a>
-          <button>Login</button>
-        </a>
+        <HashRouter>
+          <div>
+            <Route exact path='/' component={ Login }/>
+          </div>
+        </HashRouter>
       </div>
     );
   }
