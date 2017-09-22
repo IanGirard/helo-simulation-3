@@ -45,6 +45,7 @@ passport.use( new Auth0Strategy({
 ))
 
 passport.serializeUser(function(user, done) {
+    console.log('serialize')
     done(null, user);
 })
 
