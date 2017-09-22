@@ -27,6 +27,8 @@ passport.use( new Auth0Strategy({
     clientID: process.env.AUTH_CLIENT_ID,
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
+}, function(accessToken, refreshToken, extraParams, profile, done){
+    const db = app.get('db');
 }))
 
 passport.serializeUser(function(user, done) {
