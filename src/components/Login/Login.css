@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.App {
+    height: 100vh;
+    background-image: linear-gradient(99deg, #ff70a6, #ff9770 40%, #ffd670 73%, #e9ff70);
+    display: grid;
+}
+
+
+.loginContainer {
+    border-radius: 8px;
+    background-image: linear-gradient(128deg, rgba(64, 61, 57, 0.1), rgba(255, 255, 255, 0.2));
+    box-shadow: 0 14px 28px 0 rgba(0, 0, 0, 0.25), 0 10px 10px 0 rgba(0, 0, 0, 0.26);
+    height: 50vh;
+    width: 70vh;
+    margin: auto;
+    padding: 15px;
+}
+
+.siteName {
+    font-family: 'Open Sans';
+    color: white;
+    font-size:  90px;
+}
+
+.loginButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.loginButton {
+    border-radius: 1px;
+    background-image: radial-gradient(circle at 50%-46%, #737373, #403d39);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-family: 'Open Sans'; 
+    display: block;
+    color: white;
+    padding: 11px;
+    width: 250px;
+}
+
