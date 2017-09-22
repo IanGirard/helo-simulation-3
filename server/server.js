@@ -34,8 +34,8 @@ passport.use( new Auth0Strategy({
         if(user[0]) {
             done(null, user[0].id)
         } else {
-            db.create_robot([profile.displayName, profile.emails[0].value, 
-            profile.picture, profile.identities[0].user_id]).then(user => {
+            db.create_robot([profile.emails[0].value, 
+             profile.identities[0].user_id]).then(user => { //took out profile.picture
                 done(null, user[0].id)
             })
         }
@@ -50,7 +50,9 @@ passport.serializeUser(function(user, done) {
 })
 
 passport.deserializeUser(function(user, done) {
+    app.get('db').current_robot([user]).then (user =>{
     done(null, user);
+    })
 })
 
 app.get('/auth', passport.authenticate('auth0'));

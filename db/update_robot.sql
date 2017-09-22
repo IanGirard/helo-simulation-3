@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS robots (
-    id SERIAL PRIMARY KEY,
+UPDATE  robots 
+set
     first_name VARCHAR(180),
     last_name VARCHAR(180),
     gender VARCHAR(180),
@@ -9,6 +9,4 @@ CREATE TABLE IF NOT EXISTS robots (
     birth_day INTEGER,
     birth_month VARCHAR(20),
     birth_year INTEGER,
-    img TEXT,
-    auth_id TEXT
-)
+where id = 
